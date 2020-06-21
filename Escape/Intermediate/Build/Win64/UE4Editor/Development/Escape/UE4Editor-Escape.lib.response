@@ -1,0 +1,16 @@
+/NOLOGO
+/errorReport:prompt
+/MACHINE:x64
+/SUBSYSTEM:WINDOWS
+/DEF
+/NAME:"UE4Editor-Escape.dll"
+/IGNORE:4221
+/NODEFAULTLIB
+"C:\Users\Guillaume\Documents\workspace\unreal\Escape\Intermediate\Build\Win64\EscapeEditor\Development\Engine\SharedPCH.Engine.ShadowErrors.h.obj"
+"C:\Users\Guillaume\Documents\workspace\unreal\Escape\Intermediate\Build\Win64\UE4Editor\Development\Escape\Escape.cpp.obj"
+"C:\Users\Guillaume\Documents\workspace\unreal\Escape\Intermediate\Build\Win64\UE4Editor\Development\Escape\EscapeGameModeBase.cpp.obj"
+"C:\Users\Guillaume\Documents\workspace\unreal\Escape\Intermediate\Build\Win64\UE4Editor\Development\Escape\Escape.init.gen.cpp.obj"
+"C:\Users\Guillaume\Documents\workspace\unreal\Escape\Intermediate\Build\Win64\UE4Editor\Development\Escape\EscapeGameModeBase.gen.cpp.obj"
+"C:\Users\Guillaume\Documents\workspace\unreal\Escape\Intermediate\Build\Win64\UE4Editor\Development\Escape\Default.rc2.res"
+/OUT:"C:\Users\Guillaume\Documents\workspace\unreal\Escape\Intermediate\Build\Win64\UE4Editor\Development\Escape\UE4Editor-Escape.lib"
+/INCLUDE:IMPLEMENT_MODULE_Escape
