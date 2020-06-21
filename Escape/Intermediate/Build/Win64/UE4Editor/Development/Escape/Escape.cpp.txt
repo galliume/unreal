@@ -1,0 +1,2 @@
+C:\Users\Guillaume\Documents\workspace\unreal\Escape\Intermediate\Build\Win64\UE4Editor\Development\Escape\Definitions.Escape.h
+C:\Users\Guillaume\Documents\workspace\unreal\Escape\Source\Escape\Escape.h
