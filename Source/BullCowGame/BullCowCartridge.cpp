@@ -10,7 +10,7 @@ void UBullCowCartridge::BeginPlay() // When the game starts
     const FString WordListPath = FPaths::ProjectContentDir() / TEXT("WordList/HiddenWordList.txt");
     TArray<FString> WordList;
     FFileHelper::LoadFileToStringArray(WordList, *WordListPath);
-        
+
     Isograms = GetValidWords(WordList);
 
     SetupGame();
@@ -84,6 +84,11 @@ void UBullCowCartridge::ProcessGuess(const FString& Guess)
         return;
     }
 
+    FBullCowCount Count = GetBullCows(Guess);
+
+    PrintLine(TEXT("You have %i Bulls and %i Cows"), Count.Bulls, Count.Cows);
+
+
     PrintLine(TEXT("Guess again, you have %i lives left !"), Lives);
 }
 
@@ -116,4 +121,29 @@ TArray<FString> UBullCowCartridge::GetValidWords(const TArray<FString>& WordList
     }
 
     return ValidWords;
+}
+
+FBullCowCount UBullCowCartridge::GetBullCows(const FString& Guess) const
+{
+    FBullCowCount Count;
+
+    for (int32 GuessIndex = 0; GuessIndex < Guess.Len(); GuessIndex++)
+    {
+        if (Guess[GuessIndex] == HiddenWord[GuessIndex])
+        {
+            Count.Bulls++;
+        }
+        
+        for (int32 HiddenIndex = 0; HiddenIndex < HiddenWord.Len(); HiddenIndex++)
+        {
+            if (Guess[GuessIndex] == HiddenWord[HiddenIndex])
+            {
+                Count.Cows++;
+                break;
+            }
+        }
+        
+    }
+
+    return Count;
 }
