@@ -2,7 +2,8 @@
 
 
 #include "EyeTracker.h"
-#include "Math/Quat.h" 
+#include <math.h>
+#include "Kismet/KismetMathLibrary.h"
 #include "GameFramework/Actor.h"
 
 // Sets default values for this component's properties
@@ -11,8 +12,6 @@ UEyeTracker::UEyeTracker()
 	// Set this component to be initialized when the game starts, and to be ticked every frame.  You can turn these features
 	// off to improve performance if you don't need them.
 	PrimaryComponentTick.bCanEverTick = true;
-
-	// ...
 }
 
 
@@ -28,15 +27,8 @@ void UEyeTracker::TickComponent(float DeltaTime, ELevelTick TickType, FActorComp
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
-	FRotator EyeRotator = GetOwner()->GetActorRotation();
-
 	FVector PlayerLocation = GetWorld()->GetFirstPlayerController()->GetPawn()->GetActorLocation();
-	UE_LOG(LogTemp, Warning, TEXT("Player location : %s"), *PlayerLocation.ToCompactString());
-
-	//EyeRotator.Pitch = PlayerLocation.Y;
-	EyeRotator.Yaw = PlayerLocation.Z;
-	EyeRotator.Roll = PlayerLocation.X;
-
-	GetOwner()->SetActorRotation(EyeRotator);
+	FRotator PlayerRot = UKismetMathLibrary::FindLookAtRotation(GetOwner()->GetActorLocation(), PlayerLocation);
+	GetOwner()->SetActorRotation(PlayerRot);
 }
 
