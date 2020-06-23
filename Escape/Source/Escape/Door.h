@@ -2,11 +2,11 @@
 
 #pragma once
 
+#include "Engine/TriggerVolume.h"
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
-#include "Engine/TriggerVolume.h"
+#include "Sound/AmbientSound.h" 
 #include "Door.generated.h"
-
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class ESCAPE_API UDoor : public UActorComponent
@@ -16,7 +16,7 @@ class ESCAPE_API UDoor : public UActorComponent
 public:	
 	// Sets default values for this component's properties
 	UDoor();
-	void OpenDoor(float DeltaTime);
+	void ToggleDoor(float DeltaTime);
 
 protected:
 	// Called when the game starts
@@ -27,14 +27,26 @@ public:
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
 private:
-	UPROPERTY(EditAnywhere)
-	float TargetYaw = 90.f;
 	float CurrentYaw;
 	float InitialYaw;
+	int TogglingSpeed = 30;
+	bool IsLocked = false;
 
+	UPROPERTY(EditAnywhere)
+	float TargetYaw = 90.f;
+	
 	UPROPERTY(EditAnywhere)
 	ATriggerVolume* PressurePlate;
 
 	UPROPERTY(EditAnywhere)
+	AAmbientSound* DoorScream;
+
+	UPROPERTY(EditAnywhere)
+	AAmbientSound* Ambient;
+
+	UPROPERTY(EditAnywhere)
 	AActor* ActorThatOpen; 
+
+	UPROPERTY(EditAnywhere)
+	AActor* ActorToShow; 
 };
