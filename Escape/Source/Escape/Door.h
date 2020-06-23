@@ -16,7 +16,10 @@ public:
 	// Sets default values for this component's properties
 	UDoor();
 
-	float TargetYaw = -60.f;
+	UPROPERTY(EditAnywhere)
+	float TargetYaw = 90.f;
+	float CurrentYaw;
+	float InitialYaw;
 protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
