@@ -20,9 +20,8 @@ void UDoor::BeginPlay()
 {
 	Super::BeginPlay();
 
-	UE_LOG(LogTemp, Warning, TEXT("COUCOU"));
-	FRotator DoorRotator = {0.f, -60.f, 0.f};
-	GetOwner()->SetActorRotation(DoorRotator);
+	//FRotator DoorRotator(0.f, -60.f, 0.f);
+	//GetOwner()->SetActorRotation(DoorRotator);
 }
 
 
@@ -31,6 +30,15 @@ void UDoor::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentT
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
-	// ...
+	UE_LOG(LogTemp, Warning, TEXT("%s"), *GetOwner()->GetActorRotation().ToString());
+	UE_LOG(LogTemp, Warning, TEXT("Current Yaw %f"), GetOwner()->GetActorRotation().Yaw);
+
+	
+	float AngleOpener = FMath::RandRange(0.f, 0.1f);
+
+	float CurrentYaw = GetOwner()->GetActorRotation().Yaw;
+	FRotator DoorOpener(0.f, TargetYaw, 0.f);
+	DoorOpener.Yaw = FMath::FInterpTo(CurrentYaw, TargetYaw, DeltaTime, 2);
+	GetOwner()->SetActorRotation(DoorOpener);
 }
 
