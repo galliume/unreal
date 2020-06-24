@@ -52,6 +52,8 @@ void UDoor::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentT
 	{
 		ToggleDoor(DeltaTime);	
 	} 
+
+	TimeElapsed = GetWorld()->GetTimeSeconds();
 }
 
 void UDoor::ToggleDoor(float DeltaTime)
@@ -60,11 +62,4 @@ void UDoor::ToggleDoor(float DeltaTime)
 	FRotator DoorOpener = GetOwner()->GetActorRotation();
 	DoorOpener.Yaw = CurrentYaw;
 	GetOwner()->SetActorRotation(DoorOpener); 
-/* 	
-	float AngleOpener = FMath::RandRange(0.f, 0.1f);
-	float CurrentYaw = GetOwner()->GetActorRotation().Yaw;
-	FRotator DoorOpener(0.f, TargetYaw, 0.f);
-	DoorOpener.Yaw = FMath::FInterpTo(CurrentYaw, TargetYaw, DeltaTime, 2);
-	GetOwner()->SetActorRotation(DoorOpener); 
-*/
 }

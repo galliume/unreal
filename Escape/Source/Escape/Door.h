@@ -17,8 +17,7 @@ public:
 	// Sets default values for this component's properties
 	UDoor();
 	void ToggleDoor(float DeltaTime);
-
-protected:
+	protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
 
@@ -30,7 +29,8 @@ private:
 	float CurrentYaw;
 	float InitialYaw;
 	int TogglingSpeed = 30;
-	bool IsLocked = false;
+	bool IsLocked = false;		
+	float TimeElapsed = 0.f;
 
 	UPROPERTY(EditAnywhere)
 	float TargetYaw = 90.f;
