@@ -4,17 +4,13 @@
 #include "Engine/World.h"
 #include "GameFramework/PlayerController.h"
 #include "GameFramework/Actor.h"
+#include "Components/PrimitiveComponent.h" 
 
 // Sets default values for this component's properties
 UDoor::UDoor()
 {
-	// Set this component to be initialized when the game starts, and to be ticked every frame.  You can turn these features
-	// off to improve performance if you don't need them.
 	PrimaryComponentTick.bCanEverTick = true;
-
-	// ...
 }
-
 
 // Called when the game starts
 void UDoor::BeginPlay()
@@ -53,6 +49,13 @@ void UDoor::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentT
 		ToggleDoor(DeltaTime);	
 	} 
 
+	if (TotalMassOfActors() > MassToOpenDoor)
+	{
+		TogglingSpeed = 30;	
+		TargetYaw = 280.f;
+		ToggleDoor(DeltaTime);	
+	}
+
 	TimeElapsed = GetWorld()->GetTimeSeconds();
 }
 
@@ -62,4 +65,22 @@ void UDoor::ToggleDoor(float DeltaTime)
 	FRotator DoorOpener = GetOwner()->GetActorRotation();
 	DoorOpener.Yaw = CurrentYaw;
 	GetOwner()->SetActorRotation(DoorOpener); 
+}
+
+float UDoor::TotalMassOfActors() const
+{
+	float TotalMass = 0.f;
+
+	if (KeyeTrigger) 
+	{
+		TArray<AActor*> OverlappingActors;
+		KeyeTrigger->GetOverlappingActors(OverlappingActors);
+
+		for (AActor* Actor : OverlappingActors)
+		{
+			TotalMass += Actor->FindComponentByClass<UPrimitiveComponent>()->GetMass();
+		}
+	}
+
+	return TotalMass;
 }

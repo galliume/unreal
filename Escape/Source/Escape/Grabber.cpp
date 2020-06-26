@@ -44,13 +44,14 @@ FVector UGrabber::GetPlayersWorldPosition() const
 		OUT PlayerViewPointRotation
 	);
 
-	return PlayerViewPointRotation.Vector();
+	return PlayerViewPointLocation;
 }
 
 FHitResult UGrabber::GetFirstPhysicsBodyInReach() const
 {
 	FHitResult Hit;
 	FCollisionQueryParams TraceParams(FName(TEXT("")), false, GetOwner());
+		UE_LOG(LogTemp, Warning, TEXT("HIT"));
 
 	GetWorld()->LineTraceSingleByObjectType(
 		OUT Hit,
@@ -62,6 +63,10 @@ FHitResult UGrabber::GetFirstPhysicsBodyInReach() const
 
 	AActor* ActorHit = Hit.GetActor();
 
+	if (ActorHit)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("HIT"));
+	}
 	return Hit;
 }
 
