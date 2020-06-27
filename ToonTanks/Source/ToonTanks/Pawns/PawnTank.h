@@ -23,20 +23,23 @@ class TOONTANKS_API APawnTank : public APawnBase
 
 		// Called to bind functionality to input
 		virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-
-		virtual void BeginPlay() override;
 	private:
 
-		UPROPERTY(VisibleAnywhere, BluePrintReadOnly, Category = "Components", meta = (AllowPRivateAccess = "true"))
+		UPROPERTY(VisibleAnywhere, BluePrintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
 		USpringArmComponent* SpringArm;
 		
-		UPROPERTY(VisibleAnywhere, BluePrintReadOnly, Category = "Components", meta = (AllowPRivateAccess = "true"))
+		UPROPERTY(VisibleAnywhere, BluePrintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
 		UCameraComponent* Camera;
 
 		FVector MoveDirection;
 		FQuat RotationDirection;
-	
+
+		APlayerController* PlayerControllerRef;
+		FHitResult TraceHitResult;
+
+		UPROPERTY(EditAnywhere, BlueprintReadWrite, Category ="Movement", meta = (AllowPrivateAccess = "true"))
 		float MoveSpeed = 100.0f;
+		UPROPERTY(EditAnywhere, BlueprintReadWrite, Category ="Movement", meta = (AllowPrivateAccess = "true"))		
 		float RotateSpeed = 100.0f;
 
 		void CalculateMoveInput(float Value);
@@ -45,4 +48,6 @@ class TOONTANKS_API APawnTank : public APawnBase
 		void Move();
 		void Rotate();
 	protected:
+		virtual void BeginPlay() override;
+		virtual void HandleDestruction() override;
 };

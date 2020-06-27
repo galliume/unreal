@@ -13,9 +13,16 @@ class TOONTANKS_API APawnBase : public APawn
 {
 	GENERATED_BODY()
 
-private :
+public:
+	// Sets default values for this pawn's properties
+	APawnBase();
 
 protected:
+	void RotateTurret(FVector LookAtTarget);
+	void Fire();
+	virtual void HandleDestruction();
+
+private :
 	UPROPERTY(VisibleAnywhere, BluePrintReadOnly, Category = "Components", meta = (AllowPRivateAccess = "true"))
 	UCapsuleComponent* CapsuleComp;
 	UPROPERTY(VisibleAnywhere, BluePrintReadOnly, Category = "Components", meta = (AllowPRivateAccess = "true"))
@@ -24,8 +31,4 @@ protected:
 	UStaticMeshComponent* TurretMesh;
 	UPROPERTY(VisibleAnywhere, BluePrintReadOnly, Category = "Components", meta = (AllowPRivateAccess = "true"))
 	USceneComponent* ProjectileSpawnPoint;
-
-public:
-	// Sets default values for this pawn's properties
-	APawnBase();
 };
