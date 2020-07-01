@@ -49,3 +49,8 @@ void APawnBase::HandleDestruction()
 {
 
 }
+
+void APawnBase::PawnDetroyed()
+{
+	HandleDestruction();
+}
