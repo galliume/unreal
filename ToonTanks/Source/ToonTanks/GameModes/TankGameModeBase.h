@@ -32,6 +32,9 @@ class TOONTANKS_API ATankGameModeBase : public AGameModeBase
 		UPROPERTY(VisibleAnywhere, BluePrintReadOnly, Category = "Player", meta = (AllowPRivateAccess = "true"))
 		APawnTank* PlayerTank;
 
+		UPROPERTY(EditAnywhere, BluePrintReadWrite, Category = "Game loop", meta = (AllowPRivateAccess = "true"))
+		int StartDelay = 3;
+
 		void HandleGameStart();
 		void HandleGameOver(bool PlayerWon);
 		int32 GetTargetTurretsCount();
