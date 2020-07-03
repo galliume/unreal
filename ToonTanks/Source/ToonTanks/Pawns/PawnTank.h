@@ -23,6 +23,8 @@ class TOONTANKS_API APawnTank : public APawnBase
 
 		// Called to bind functionality to input
 		virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+
+		bool GetPlayerAlive();
 	private:
 
 		UPROPERTY(VisibleAnywhere, BluePrintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
@@ -36,6 +38,8 @@ class TOONTANKS_API APawnTank : public APawnBase
 
 		APlayerController* PlayerControllerRef;
 		FHitResult TraceHitResult;
+
+		bool bAlive = true;
 
 		UPROPERTY(EditAnywhere, BlueprintReadWrite, Category ="Movement", meta = (AllowPrivateAccess = "true"))
 		float MoveSpeed = 100.0f;

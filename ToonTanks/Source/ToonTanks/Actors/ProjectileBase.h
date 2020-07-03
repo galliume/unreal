@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "Particles/ParticleSystemComponent.h"
 #include "ProjectileBase.generated.h"
 
 class UProjectileMovementComponent;
@@ -29,6 +30,9 @@ private:
 	UPROPERTY(VisibleAnywhere, BluePrintReadOnly, Category = "Components", meta = (AllowPRivateAccess = "true"))
 	UStaticMeshComponent* ProjectileMesh;
 
+	UPROPERTY(VisibleAnywhere, BluePrintReadOnly, Category = "Components", meta = (AllowPRivateAccess = "true"))
+	UParticleSystemComponent* ParticleTrail;
+
 	UPROPERTY(EditDefaultsOnly, Category = "Damage", meta = (AllowPRivateAccess = "true"))
 	TSubclassOf<UDamageType> DamageType;
 
@@ -37,6 +41,9 @@ private:
 
 	UPROPERTY(EditAnywhere, BluePrintReadWrite, Category = "Damage", meta = (AllowPRivateAccess = "true"))
 	float Damage = 50.0f;
+
+	UPROPERTY(EditAnywhere, BluePrintReadOnly, Category = "Effetcs", meta = (AllowPRivateAccess = "true"))
+	UParticleSystem* HitParticle;
 
 	UFUNCTION()
 	void OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
