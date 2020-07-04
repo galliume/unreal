@@ -48,4 +48,8 @@ private:
 	UFUNCTION()
 	void OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
 
+	UPROPERTY(EditAnywhere, BluePrintReadOnly, Category = "Effetcs", meta = (AllowPRivateAccess = "true"))
+	USoundBase* HitSound;
+	UPROPERTY(EditAnywhere, BluePrintReadOnly, Category = "Effetcs", meta = (AllowPRivateAccess = "true"))
+	USoundBase* LaunchSound;
 };

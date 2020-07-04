@@ -44,4 +44,7 @@ private :
 
 	UPROPERTY(VisibleAnywhere, BluePrintReadOnly, Category = "Components", meta = (AllowPRivateAccess = "true"))
 	UHealthComponent* HealthComponent;
+
+	UPROPERTY(EditAnywhere, BluePrintReadOnly, Category = "Effetcs", meta = (AllowPRivateAccess = "true"))
+	USoundBase* DeathSound;
 };
