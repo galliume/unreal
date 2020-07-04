@@ -50,6 +50,10 @@ private:
 
 	UPROPERTY(EditAnywhere, BluePrintReadOnly, Category = "Effetcs", meta = (AllowPRivateAccess = "true"))
 	USoundBase* HitSound;
+	
 	UPROPERTY(EditAnywhere, BluePrintReadOnly, Category = "Effetcs", meta = (AllowPRivateAccess = "true"))
 	USoundBase* LaunchSound;
+	
+	UPROPERTY(EditAnywhere, BluePrintReadOnly, Category = "Effetcs", meta = (AllowPRivateAccess = "true"))
+	TSubclassOf<UCameraShake> HitShake;
 };

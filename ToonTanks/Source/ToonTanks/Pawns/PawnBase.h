@@ -47,4 +47,7 @@ private :
 
 	UPROPERTY(EditAnywhere, BluePrintReadOnly, Category = "Effetcs", meta = (AllowPRivateAccess = "true"))
 	USoundBase* DeathSound;
+
+	UPROPERTY(EditAnywhere, BluePrintReadOnly, Category = "Effetcs", meta = (AllowPRivateAccess = "true"))
+	TSubclassOf<UCameraShake> DeathShake;
 };
