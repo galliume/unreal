@@ -1,0 +1,2 @@
+C:\Users\Guillaume\Documents\workspace\unreal\SimpleShooter\SimpleShooter\Intermediate\Build\Win64\UE4Editor\Development\SimpleShooter\Definitions.SimpleShooter.h
+C:\Users\Guillaume\Documents\workspace\unreal\SimpleShooter\SimpleShooter\Source\SimpleShooter\SimpleShooter.h
