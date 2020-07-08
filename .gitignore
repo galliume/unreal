@@ -87,5 +87,3 @@ BuildingEscape.code-workspace
 Escape/Saved/Logs/Escape.log
 *.log
 Escape/Saved/Logs/Escape.log
-*.uasset
-*.umap
